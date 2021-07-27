@@ -1,0 +1,24 @@
+- kurise_status_replicas  Pod 总数
+- kurise_status_replicas_ready  ready Pod 数量
+- kurise_status_replicas_available  ready and available Pod 数量 (满足 minReadySeconds)
+- kurise_status_replicas_updated  最新版本的 Pod 数量
+- kurise_status_replicas_updated_ready  最新版本的 ready Pod 数量
+- kurise_status_replicas_unavailable  ready and unavailable Pod 数量
+- kurise_status_observed_generation
+- kurise_status_condition
+- kurise_spec_replicas
+- kurise_spec_strategy_rollingupdate_max_kurise_specunavailable  限制下属最多不可用的 kurise_specPod 数量
+- kurise_spec_strategy_rollingupdate_max_surge  控制最多能扩出来超过 replicas 的 Pod 数量
+kurise_spec- _metadata_generation
+- kurise_labels
+---
+- kurise_spec_strategy_partition  保留旧版本 Pod 的数量或百分比
+- kurise_lifecycle
+- kurise_spec_pvc_resources
+- kurise_status_replicas_pvc 带pvc的pod数
+- kurise_lifecycle_label_state:
+    - Normal：正常状态
+    - PreparingUpdate：准备原地升级
+    - Updating：原地升级中
+    - Updated：原地升级完成
+    - PreparingDelete：准备删除
