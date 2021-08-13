@@ -1,4 +1,28 @@
-## FederatedCloneSet思路
+## FederatedCloneSet
+
+### 8.13更新
+
+> 进一步阅读 kubefed，kubebuilder 文档以及 scheduling 部分源码后对项目目标以及实现方法有了更清晰的认知
+
+- #### 目标
+
+实现对集群 CloneSet 的联邦控制
+
+- #### 思路
+
+首先来谈谈原生的 FederatedDeployment 实现
+
+1. 通过 key 从 cache 中拿到事件
+2. 启动 scheduling，分配 replicas
+3. 通过 propagation 将资源传播到集群
+
+回到项目上，如果目标是遵循 kubefed 的调度规则的同时向集群下发 CloneSet 配置，我们只需要定义一个在原来 scheduling resource 基础上添加 CloneSet 配置的 CRD，然后再配置 FederatedTypeConfig 将资源广播至集群即可，这是最基础的 FederatedCloneSet 。如果后期需要根据实际生产中的要求来修改副本调度算法，可以再对第二部分即原生副本分配算法优化。
+
+
+
+---
+
+
 
 首先得明确 FederatedCloneSet 的主要功能：任务分发至集群的 cloneset
 
